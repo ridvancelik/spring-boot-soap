@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-                  xmlns:tns="urn:PTL" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:tns="https://github.com/ridvancelik"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
                   xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
                   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-                  targetNamespace="urn:PTL">
+                  targetNamespace="https://github.com/ridvancelik">
 
     <wsdl:types>
-        <xs:schema targetNamespace="urn:PTL">
-            <xs:element name="pushPtlData">
+        <xs:schema targetNamespace="https://github.com/ridvancelik">
+            <xs:element name="helloWorldReq">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element type="xs:string" name="test"/>
-                        <xs:element type="tns:TPtlData" name="pData"/>
+                        <xs:element type="xs:string" name="name"/>
+                        <xs:element type="tns:ComplexExample" name="extras"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="outputSOATest">
+            <xs:element name="helloWorldRes">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element type="xs:string" name="result"/>
+                        <xs:element type="xs:string" name="greetingMessage"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -28,17 +29,17 @@
 
 
     <!--Define input and output parameters -->
-    <wsdl:message name="pushPtlData">
-        <wsdl:part name="in" element="tns:pushPtlData"/>
+    <wsdl:message name="helloWorldReq">
+        <wsdl:part name="in" element="tns:helloWorldReq"/>
     </wsdl:message>
     <wsdl:message name="outputSOATest">
-        <wsdl:part name="out" element="tns:outputSOATest"/>
+        <wsdl:part name="out" element="tns:helloWorldRes"/>
     </wsdl:message>
 
     <!--Define port definition -->
     <wsdl:portType name="SOATestEndpoint">
         <wsdl:operation name="SOATest">
-            <wsdl:input message="tns:pushPtlData"/>
+            <wsdl:input message="tns:helloWorldReq"/>
             <wsdl:output message="tns:outputSOATest"/>
         </wsdl:operation>
     </wsdl:portType>
@@ -61,27 +62,16 @@
     <!--Define service -->
     <wsdl:service name="SOATestEndpointService">
         <wsdl:port name="SOATestEndpoint" binding="tns:SOATestBinding">
-            <soap:address location="http://localhost:8080/accenture/ws/helloWorldExample"/>
+            <soap:address location="http://localhost:8080/ridvancelik/ws/helloWorldExample"/>
         </wsdl:port>
     </wsdl:service>
 
-    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:PTL"
-               targetNamespace="urn:PTL">
-        <xs:complexType name="TPtlData">
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://github.com/ridvancelik"
+               targetNamespace="https://github.com/ridvancelik">
+        <xs:complexType name="ComplexExample">
             <xs:sequence>
-                <xs:element name="idSq" type="xs:int"/>
-                <xs:element name="wkMont" type="xs:int"/>
-                <xs:element name="knr" type="xs:int"/>
-                <xs:element name="knrWk" type="xs:int"/>
-                <xs:element name="knrRok" type="xs:int"/>
-                <xs:element name="lfnr" type="xs:int"/>
-                <xs:element name="model" type="xs:string"/>
-                <xs:element name="sekvD" type="xs:string"/>
-                <xs:element name="sekvdId" type="xs:string"/>
-                <xs:element name="kbodevId" type="xs:string"/>
-                <xs:element name="maxLfnr" type="xs:int"/>
-                <xs:element name="mnPal" type="xs:int"/>
-                <xs:element name="mnPrint" type="xs:int"/>
+                <xs:element name="age" type="xs:int"/>
+                <xs:element name="familyName" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:schema>

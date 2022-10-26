@@ -1,4 +1,4 @@
-package com.accenture;
+package com.ridvancelik;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

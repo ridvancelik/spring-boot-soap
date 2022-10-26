@@ -1,4 +1,4 @@
-package com.accenture.config;
+package com.ridvancelik.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -20,7 +20,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
 		servlet.setApplicationContext(applicationContext);
 
-		return new ServletRegistrationBean(servlet, "/accenture/ws/*");
+		return new ServletRegistrationBean(servlet, "/ridvancelik/ws/*");
 	}
 
 	@Bean(name="helloworld")
